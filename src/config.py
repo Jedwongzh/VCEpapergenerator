@@ -12,8 +12,8 @@ class Config:
 
     # Model directories
     MODELS_DIR = os.path.join(os.path.dirname(__file__), '../models')
-    METHODS_MODEL_PATH = os.path.join(MODELS_DIR, 'methods', 'model.pt')
-    SPECIALIST_MODEL_PATH = os.path.join(MODELS_DIR, 'specialist', 'model.pt')
+    METHODS_MODEL_PATH = os.path.join(MODELS_DIR, 'methods', 'm1.pt')
+    SPECIALIST_MODEL_PATH = os.path.join(MODELS_DIR, 'specialist', 's1.pt')
 
     # Training parameters
     EPOCHS = 10

@@ -47,8 +47,10 @@ def process_pdf_files(data_dir, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
+    print(f"Processing directory: {data_dir}")
     for filename in os.listdir(data_dir):
         if filename.lower().endswith(".pdf"):
+            print(f"Found PDF: {filename}")
             pdf_path = os.path.join(data_dir, filename)
             text = extract_text_from_pdf(pdf_path)
             cleaned_text = clean_text(text)
@@ -57,15 +59,29 @@ def process_pdf_files(data_dir, output_dir):
             output_file_path = os.path.join(output_dir, f"{os.path.splitext(filename)[0]}.txt")
             with open(output_file_path, "w", encoding="utf-8") as output_file:
                 output_file.write(cleaned_text)
+    print(f"Finished processing {data_dir}")
 
 def main():
-    raw_data_dir = "./data/raw"  # Directory containing raw PDF files
-    processed_methods_dir = "./data/processed/methods"  # Output directory for processed Methods data
-    processed_specialist_dir = "./data/processed/specialist"  # Output directory for processed Specialist data
-
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    m1_raw_data_dir = os.path.join(project_root, "data", "raw", "methods", "Exam1")
+    s1_raw_data_dir = os.path.join(project_root, "data", "raw", "spesh", "Exam1")
+    m2_raw_data_dir = os.path.join(project_root, "data", "raw", "methods", "Exam2")
+    s2_raw_data_dir = os.path.join(project_root, "data", "raw", "spesh", "Exam2")
+    
+    # Output directory for processed Methods data
+    processed_methods_dir_1 = os.path.join(project_root, "data", "processed", "proc_methods", "m1")
+    processed_methods_dir_2 = os.path.join(project_root, "data", "processed", "proc_methods", "m2")
+    
+    # Output directory for processed Specialist data
+    processed_specialist_dir_1 = os.path.join(project_root, "data", "processed", "proc_specialist", "s1")
+    processed_specialist_dir_2 = os.path.join(project_root, "data", "processed", "proc_specialist", "s2")
+    
     # Process PDF files for both Methods and Specialist
-    process_pdf_files(raw_data_dir, processed_methods_dir)
-    process_pdf_files(raw_data_dir, processed_specialist_dir)
+    process_pdf_files(m1_raw_data_dir, processed_methods_dir_1)
+    process_pdf_files(m2_raw_data_dir, processed_methods_dir_2)
+    
+    process_pdf_files(s1_raw_data_dir, processed_specialist_dir_1)
+    process_pdf_files(s2_raw_data_dir, processed_specialist_dir_2)
 
 if __name__ == "__main__":
     main()
