@@ -1,0 +1,291 @@
+{
+  "access": {
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "files": "public",
+    "record": "public",
+    "status": "open"
+  },
+  "created": "2016-07-16T14:02:59+00:00",
+  "custom_fields": {},
+  "deletion_status": {
+    "is_deleted": false,
+    "status": "P"
+  },
+  "files": {
+    "count": 6,
+    "enabled": true,
+    "entries": {
+      "formula_images.tar.gz": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:cf25f2408f1ea09bbd096890a6361533",
+        "ext": "gz",
+        "id": "6d9943c6-98cc-4256-9c49-6414a83eaa06",
+        "key": "formula_images.tar.gz",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/formula_images.tar.gz/content",
+          "self": "https://zenodo.org/api/records/56198/files/formula_images.tar.gz"
+        },
+        "metadata": null,
+        "mimetype": "application/gzip",
+        "size": 292150187,
+        "storage_class": "L"
+      },
+      "im2latex_formulas.lst": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:974c0a14f0daa6d91ecd0e625f1ddf52",
+        "ext": "lst",
+        "id": "8e2d7096-da59-4dd4-a832-6238fecf1521",
+        "key": "im2latex_formulas.lst",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/im2latex_formulas.lst/content",
+          "self": "https://zenodo.org/api/records/56198/files/im2latex_formulas.lst"
+        },
+        "metadata": null,
+        "mimetype": "application/octet-stream",
+        "size": 12323106,
+        "storage_class": "L"
+      },
+      "im2latex_test.lst": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:1bc17b865796dca5df15250b4da7804f",
+        "ext": "lst",
+        "id": "499ee1a2-ce38-482a-ab81-3abbcb770f91",
+        "key": "im2latex_test.lst",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/im2latex_test.lst/content",
+          "self": "https://zenodo.org/api/records/56198/files/im2latex_test.lst"
+        },
+        "metadata": null,
+        "mimetype": "application/octet-stream",
+        "size": 237383,
+        "storage_class": "L"
+      },
+      "im2latex_train.lst": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:d5607c37aa00576098a9e4bad84a7040",
+        "ext": "lst",
+        "id": "16d8b0e9-f7cc-4b3c-9c64-e038facee49f",
+        "key": "im2latex_train.lst",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/im2latex_train.lst/content",
+          "self": "https://zenodo.org/api/records/56198/files/im2latex_train.lst"
+        },
+        "metadata": null,
+        "mimetype": "application/octet-stream",
+        "size": 1923255,
+        "storage_class": "L"
+      },
+      "im2latex_validate.lst": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:cf6eeee02bc443b1b9557685fbfe7ea5",
+        "ext": "lst",
+        "id": "c17bdd48-da40-423d-8569-a0e6451662ec",
+        "key": "im2latex_validate.lst",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/im2latex_validate.lst/content",
+          "self": "https://zenodo.org/api/records/56198/files/im2latex_validate.lst"
+        },
+        "metadata": null,
+        "mimetype": "application/octet-stream",
+        "size": 213665,
+        "storage_class": "L"
+      },
+      "readme.txt": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:3d4cb64d8c403148ff06370d71072cdc",
+        "ext": "txt",
+        "id": "bdf0e637-ac9e-4d14-addc-6377a76b0005",
+        "key": "readme.txt",
+        "links": {
+          "content": "https://zenodo.org/api/records/56198/files/readme.txt/content",
+          "self": "https://zenodo.org/api/records/56198/files/readme.txt"
+        },
+        "metadata": null,
+        "mimetype": "text/plain",
+        "size": 924,
+        "storage_class": "L"
+      }
+    },
+    "order": [],
+    "total_bytes": 306848520
+  },
+  "id": "56198",
+  "is_draft": false,
+  "is_published": true,
+  "links": {
+    "access": "https://zenodo.org/api/records/56198/access",
+    "access_grants": "https://zenodo.org/api/records/56198/access/grants",
+    "access_links": "https://zenodo.org/api/records/56198/access/links",
+    "access_request": "https://zenodo.org/api/records/56198/access/request",
+    "access_users": "https://zenodo.org/api/records/56198/access/users",
+    "archive": "https://zenodo.org/api/records/56198/files-archive",
+    "archive_media": "https://zenodo.org/api/records/56198/media-files-archive",
+    "communities": "https://zenodo.org/api/records/56198/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/56198/communities-suggestions",
+    "doi": "https://doi.org/10.5281/zenodo.56198",
+    "draft": "https://zenodo.org/api/records/56198/draft",
+    "files": "https://zenodo.org/api/records/56198/files",
+    "latest": "https://zenodo.org/api/records/56198/versions/latest",
+    "latest_html": "https://zenodo.org/records/56198/latest",
+    "media_files": "https://zenodo.org/api/records/56198/media-files",
+    "parent": "https://zenodo.org/api/records/637540",
+    "parent_doi": "https://doi.org/",
+    "parent_doi_html": "https://zenodo.org/doi/",
+    "parent_html": "https://zenodo.org/records/637540",
+    "requests": "https://zenodo.org/api/records/56198/requests",
+    "reserve_doi": "https://zenodo.org/api/records/56198/draft/pids/doi",
+    "self": "https://zenodo.org/api/records/56198",
+    "self_doi": "https://doi.org/10.5281/zenodo.56198",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.56198",
+    "self_html": "https://zenodo.org/records/56198",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:56198/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:56198/sequence/default",
+    "versions": "https://zenodo.org/api/records/56198/versions"
+  },
+  "media_files": {
+    "count": 0,
+    "enabled": false,
+    "entries": {},
+    "order": [],
+    "total_bytes": 0
+  },
+  "metadata": {
+    "creators": [
+      {
+        "affiliations": [
+          {
+            "name": "University of Eastern Finland"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Kanervisto",
+          "given_name": "Anssi",
+          "name": "Kanervisto, Anssi",
+          "type": "personal"
+        }
+      }
+    ],
+    "description": "<p>A prebuilt dataset for OpenAI's task for image-2-latex system. Includes total of ~100k formulas and images splitted into train, validation and test sets. Formulas were parsed from LaTeX sources provided here: http://www.cs.cornell.edu/projects/kddcup/datasets.html(originally from\u00a0 arXiv)</p>\n\n<p>Each image is a PNG image of fixed size. Formula is in black and rest of the image is transparent.</p>\n\n<p>For related tools (eg. tokenizer) check out this repository: https://github.com/Miffyli/im2latex-dataset<br>\nFor pre-made evaluation scripts and built im2latex system check this repository: https://github.com/harvardnlp/im2markup</p>\n\n<p><strong>Newlines used in <em>formulas_im2latex.lst </em>are UNIX-style newlines (\\n). Reading file with other type of newlines results to slightly wrong amount of lines (104563 instead of 103558), and thus breaks the structure used by this dataset. Python 3.x reads files using newlines of the running system by default, and to avoid this file must be opened with newlines</strong><strong>=\"\\n\" (eg. open(\"formulas_im2latex.lst\", newline=\"\\n\")).</strong></p>",
+    "publication_date": "2016-06-21",
+    "publisher": "Zenodo",
+    "related_identifiers": [
+      {
+        "identifier": "arXiv:1609.04938",
+        "relation_type": {
+          "id": "ispartof",
+          "title": {
+            "de": "Ist Teil von",
+            "en": "Is part of"
+          }
+        },
+        "scheme": "arxiv"
+      }
+    ],
+    "resource_type": {
+      "id": "dataset",
+      "title": {
+        "de": "Datensatz",
+        "en": "Dataset"
+      }
+    },
+    "rights": [
+      {
+        "description": {
+          "en": "CC0 waives copyright interest in a work you've created and dedicates it to the world-wide public domain. Use CC0 to opt out of copyright entirely and ensure your work has the widest reach."
+        },
+        "icon": "cc-cc0-icon",
+        "id": "cc0-1.0",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+        },
+        "title": {
+          "en": "Creative Commons Zero v1.0 Universal"
+        }
+      }
+    ],
+    "subjects": [
+      {
+        "subject": "im2latex"
+      },
+      {
+        "subject": "latex"
+      },
+      {
+        "subject": "tex"
+      },
+      {
+        "subject": "formula"
+      },
+      {
+        "subject": "openai"
+      }
+    ],
+    "title": "im2latex-100k ,  arXiv:1609.04938"
+  },
+  "parent": {
+    "access": {
+      "owned_by": {
+        "user": "22860"
+      }
+    },
+    "communities": {},
+    "id": "637540",
+    "pids": {
+      "doi": {
+        "identifier": "",
+        "provider": "legacy"
+      }
+    }
+  },
+  "pids": {
+    "doi": {
+      "client": "datacite",
+      "identifier": "10.5281/zenodo.56198",
+      "provider": "datacite"
+    },
+    "oai": {
+      "identifier": "oai:zenodo.org:56198",
+      "provider": "oai"
+    }
+  },
+  "revision_id": 24,
+  "stats": {
+    "all_versions": {
+      "data_volume": 4697546990428.0,
+      "downloads": 41407,
+      "unique_downloads": 17303,
+      "unique_views": 30842,
+      "views": 35037
+    },
+    "this_version": {
+      "data_volume": 4689122801616.0,
+      "downloads": 41305,
+      "unique_downloads": 17256,
+      "unique_views": 30696,
+      "views": 34877
+    }
+  },
+  "status": "published",
+  "swh": {},
+  "updated": "2020-01-24T19:25:46.030701+00:00",
+  "versions": {
+    "index": 1,
+    "is_latest": true
+  }
+}

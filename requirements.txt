@@ -8,3 +8,4 @@ scikit-learn==1.1.1
 jupyter==1.0.0
 matplotlib==3.5.2
 seaborn==0.11.2
+aspose-pdf==25.2.0
