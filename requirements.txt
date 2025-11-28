@@ -11,3 +11,8 @@ jupyter
 matplotlib
 seaborn
 chromadb
+google-generativeai
+fastapi
+uvicorn
+python-multipart
+reportlab

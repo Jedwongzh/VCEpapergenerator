@@ -1,11 +1,15 @@
-# vce_paper_generator/common/vector_db.py
-
 import chromadb
 from chromadb.utils import embedding_functions
+import os
 
 class VectorDB:
-    def __init__(self, collection_name="vce_papers", host="localhost", port="8000"):
-        self.client = chromadb.HttpClient(host=host, port=port)
+    def __init__(self, collection_name="vce_papers", path="./chroma_db"):
+        """
+        Initialize the VectorDB with a persistent client.
+        :param collection_name: Name of the collection to use.
+        :param path: Path to the local ChromaDB storage.
+        """
+        self.client = chromadb.PersistentClient(path=path)
         self.collection = self.client.get_or_create_collection(
             name=collection_name,
             embedding_function=embedding_functions.DefaultEmbeddingFunction()
@@ -15,15 +19,23 @@ class VectorDB:
         """
         Adds documents to the collection.
         """
+        if not documents:
+            return
+
         if not ids:
-            ids = [f"doc_{i}" for i in range(len(documents))]
+            # Generate deterministic IDs based on content hash or simple index if not provided
+            # For now, using simple index is risky for persistence, so let's use a simple counter 
+            # or rely on caller to provide IDs. 
+            # If caller doesn't provide, we'll generate them.
+            current_count = self.collection.count()
+            ids = [f"doc_{current_count + i}" for i in range(len(documents))]
 
         self.collection.add(
             documents=documents,
             metadatas=metadatas,
             ids=ids
         )
-        print(f"Added {len(documents)} documents to the collection.")
+        print(f"Added {len(documents)} documents to the collection '{self.collection.name}'.")
 
     def query_documents(self, query_texts, n_results=5, where=None):
         """
@@ -37,7 +49,7 @@ class VectorDB:
 
 if __name__ == "__main__":
     # Example usage
-    vector_db = VectorDB()
+    vector_db = VectorDB(path="./test_chroma_db")
 
     # Example documents
     docs = [
