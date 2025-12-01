@@ -32,7 +32,7 @@ def create_exam_pdf(questions, filename, subject="General", year_level="12"):
     # Cover Page
     story.append(Paragraph(f"VICTORIAN CERTIFICATE OF EDUCATION", styles['Title']))
     story.append(Spacer(1, 1*cm))
-    story.append(Paragraph(f"{subject.upper()} - YEAR {year_level}", styles['Heading1']))
+    story.append(Paragraph(f"{subject.upper()} - UNIT {year_level}", styles['Heading1']))
     story.append(Spacer(1, 2*cm))
     story.append(Paragraph("STUDENT NAME: _________________________________", styles['Normal']))
     story.append(Spacer(1, 1*cm))
@@ -45,11 +45,12 @@ def create_exam_pdf(questions, filename, subject="General", year_level="12"):
     for i, q_data in enumerate(questions):
         q_text = q_data.get("question", "")
         topic = q_data.get("topic", "")
+        difficulty = q_data.get("difficulty", "")
         
         # Format the question text (handle newlines)
         q_text = q_text.replace("\n", "<br/>")
         
-        story.append(Paragraph(f"Question {i+1} ({topic})", styles['QuestionTitle']))
+        story.append(Paragraph(f"Question {i+1} ({topic} - {difficulty})", styles['QuestionTitle']))
         story.append(Paragraph(q_text, styles['QuestionBody']))
         story.append(Spacer(1, 1*cm))
         

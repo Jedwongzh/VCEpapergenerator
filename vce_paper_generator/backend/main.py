@@ -18,11 +18,10 @@ from vce_paper_generator.backend import gemini_service
 
 app = FastAPI(title="VCE Exam Paper Generator API")
 
-# Configure CORS for production
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+# Configure CORS - Allow ALL for debugging
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=["*"],  # Temporarily allow all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -35,10 +34,10 @@ CHROMA_DB_PATH = os.path.join(BASE_DIR, "chroma_db")
 vector_db = VectorDB(path=CHROMA_DB_PATH)
 
 class GeneratePaperRequest(BaseModel):
-    year_level: str
+    subject: str
+    unit: str
     topics: List[str]
-    difficulty: str
-    num_questions: int = 5
+    num_questions: int = 10
 
 class ExplainRequest(BaseModel):
     question_text: str
@@ -61,44 +60,60 @@ def generate_paper(request: GeneratePaperRequest):
     """
     generated_questions = []
     
-    for topic in request.topics:
-        # Retrieve relevant chunks for the topic
-        results = vector_db.query_documents([topic], n_results=3)
-        
-        context_chunks = []
-        if results and results['documents']:
-            context_chunks = results['documents'][0]
+    # Calculate distribution: 1/3 Easy, 1/3 Medium, 1/3 Hard
+    # For 10 questions: 3 Easy, 4 Medium, 3 Hard (approx)
+    difficulties = ["Easy"] * 3 + ["Medium"] * 4 + ["Hard"] * 3
+    
+    # Distribute topics across questions
+    # If fewer topics than questions, cycle through them
+    topic_cycle = request.topics * (request.num_questions // len(request.topics) + 1)
+    
+    try:
+        for i in range(request.num_questions):
+            topic = topic_cycle[i]
+            difficulty = difficulties[i]
             
-        # Generate question using Gemini
-        question = gemini_service.generate_question(
-            context_chunks=context_chunks,
-            topic=topic,
-            difficulty=request.difficulty
+            # Retrieve relevant chunks for the topic
+            results = vector_db.query_documents([topic], n_results=3)
+            
+            context_chunks = []
+            if results and results['documents']:
+                context_chunks = results['documents'][0]
+                
+            # Generate question using Gemini
+            question_data = gemini_service.generate_question(
+                context_chunks=context_chunks,
+                topic=topic,
+                difficulty=difficulty,
+                subject=request.subject,
+                unit=request.unit
+            )
+            
+            generated_questions.append(question_data)
+        
+        # Generate PDF
+        output_dir = os.path.join(BASE_DIR, "generated_papers")
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+            
+        filename = f"exam_{uuid.uuid4()}.pdf"
+        file_path = os.path.join(output_dir, filename)
+        
+        pdf_generator.create_exam_pdf(
+            questions=generated_questions,
+            filename=file_path,
+            subject=request.subject,
+            year_level=request.unit
         )
         
-        generated_questions.append({
-            "topic": topic,
-            "question": question
-        })
-    
-    # Generate PDF
-    output_dir = os.path.join(BASE_DIR, "generated_papers")
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-        
-    filename = f"exam_{uuid.uuid4()}.pdf"
-    file_path = os.path.join(output_dir, filename)
-    
-    pdf_generator.create_exam_pdf(
-        questions=generated_questions,
-        filename=file_path,
-        subject="VCE Mathematics", # Could be inferred
-        year_level=request.year_level
-    )
-    
-    # Return URL (assuming static file serving or just path for now)
-    # For a real plugin, we'd serve this file via a static mount or S3
-    return {"pdf_url": f"/download/{filename}", "questions": generated_questions}
+        # Return URL and questions for display
+        return {"pdf_url": f"/download/{filename}", "questions": generated_questions}
+
+    except Exception as e:
+        import traceback
+        error_msg = f"Error generating paper: {str(e)}\n{traceback.format_exc()}"
+        print(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
 
 @app.get("/download/{filename}")
 def download_file(filename: str):
